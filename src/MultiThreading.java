@@ -19,6 +19,9 @@ public class MultiThreading {
                 Socket clientSocket = serverSocket.accept();    //Process State, Step 2
                 //Informative
                 System.out.println("Client is connected");
+                //Repeat again with threads
+                ClientThread clientThread = new ClientThread(clientSocket);
+                clientThread.start();
             }
 
         } catch (IOException e) {
