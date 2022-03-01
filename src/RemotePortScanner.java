@@ -16,8 +16,24 @@ public class RemotePortScanner {
 
         try {
             targetIP = reader.readLine();  //Read the target IP address
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) { //Error when trying to read user input
+            System.out.println("Cannot read the IP address!" + e);
         }
+
+        //Boolean value which is used to control the validation process
+        boolean isValid = false;
+
+        //As long as isValid false, it will try to obtain a valid port number
+        while (isValid) {
+            try {
+                System.out.println("Please enter the first port -> ");  //Ask user to type the first port
+                String portString = reader.readLine();  //Read the port number
+                fromPort = Integer.parseInt(portString);  //Try to convert String to Integer
+                
+            } catch (NumberFormatException n) {
+                System.out.println("Number Format Exception -> " + n);
+            }
+        }
+
     }
 }
