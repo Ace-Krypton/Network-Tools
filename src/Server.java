@@ -12,24 +12,31 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(9090);
             System.out.println("Waiting for clients...");
 
-            //Listens until the connection is established
-            Socket socket = serverSocket.accept();
+            //Boolean variable for stopping the loop
+            boolean stop = false;
 
-            //Prints Data and autoFlush mode is on
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("Hello Client");
+            //Loop for waiting another client
+            while (!stop) {
+                //Listens until the connection is established
+                Socket socket = serverSocket.accept();
 
-            //It is for reading the data
-            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                //Prints Data and autoFlush mode is on
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                out.println("Hello Client");
 
-            //For the client input
-            String clientInput = input.readLine();
-            System.out.println(clientInput);
+                //It is for reading the data
+                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            //Closing the Streams
-            input.close();
-            out.close();
-            socket.close();
+                //For the client input
+                String clientInput = input.readLine();
+                System.out.println(clientInput);
+
+                //Closing the Streams
+                input.close();
+                out.close();
+                socket.close();
+            }
+            serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
