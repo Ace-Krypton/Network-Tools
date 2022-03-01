@@ -72,14 +72,14 @@ public class RemotePortScanner {
                 Socket socket = new Socket(targetIP, port); //Try to open on socket connection using the specified IP address and Port
                 System.out.println("Port " + port + " is in listening state");  //Print listening port
                 socket.close();
-            } catch (UnknownHostException u) {
+            } catch (UnknownHostException u) {  //Catch block will execute if an invalid host was entered
                 System.out.println("Unknown Host Exception -> " + u);
-            } catch (IOException i) {
-                System.out.println("Port  " + port + " is not opened");
-            } catch (Exception e) {
-                System.out.println("Other Exception -> " + e);
+            } catch (IOException i) {   //Execute when the port is already opened
+                System.out.println("Port  " + port + " is not opened"); //Print which port is opened
+            } catch (Exception e) { //Execute if another exception is raised
+                System.out.println("Other Exception -> " + e);  //print the error
             }
-            port++;
+            port++; //Increase port number in order to test next port
         }
     }
 }
