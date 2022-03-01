@@ -75,7 +75,7 @@ public class RemotePortScanner {
             } catch (UnknownHostException u) {
                 System.out.println("Unknown Host Exception -> " + u);
             } catch (IOException i) {
-                System.out.println("IO Exception -> " + i);
+                System.out.println("Port  " + port + " is not opened");
             } catch (Exception e) {
                 System.out.println("Other Exception -> " + e);
             }
