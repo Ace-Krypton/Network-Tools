@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class RemotePortScanner {
     public static void main(String[] args) {
@@ -61,6 +63,23 @@ public class RemotePortScanner {
             } catch (Exception e) {  //Error when trying to read user input
                 System.out.println("Cannot Read The Port Number -> " + e);
             }
+        }
+
+        int port = fromPort; //Start with fromPort value
+
+        while (port >= fromPort && port <= toPort) {  //Use the given port range
+            try {
+                Socket socket = new Socket(targetIP, port); //Try to open on socket connection using the specified IP address and Port
+                System.out.println("Port " + port + " is in listening state");  //Print listening port
+                socket.close();
+            } catch (UnknownHostException u) {
+                System.out.println("Unknown Host Exception -> " + u);
+            } catch (IOException i) {
+                System.out.println("IO Exception -> " + i);
+            } catch (Exception e) {
+                System.out.println("Other Exception -> " + e);
+            }
+            port++;
         }
     }
 }
