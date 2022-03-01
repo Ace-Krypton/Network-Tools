@@ -24,16 +24,43 @@ public class RemotePortScanner {
         boolean isValid = false;
 
         //As long as isValid false, it will try to obtain a valid port number
-        while (isValid) {
+        while (!isValid) {
             try {
                 System.out.println("Please enter the first port -> ");  //Ask user to type the first port
                 String portString = reader.readLine();  //Read the port number
                 fromPort = Integer.parseInt(portString);  //Try to convert String to Integer
-                
+
+                if (fromPort >= 0 && fromPort <= 65536) {  //Verify that port is in valid range
+                    isValid = true;
+                }
+                else System.out.println("Invalid port!\nPort range is -> 0 - 65536");   //Inform the user about right port range
             } catch (NumberFormatException n) {
                 System.out.println("Number Format Exception -> " + n);
+            } catch (Exception e) {  //Error when trying to read user input
+                System.out.println("Cannot Read The Port Number -> " + e);
             }
         }
 
+        isValid = false;  //Reinitialize the boolean value to false in order to start a new validation process
+
+        //As long as isValid is false, try to obtain a valid port number
+        while (!isValid) {
+            try {
+                System.out.println("Enter The Last Port ->  "); //Ask user to type last port
+                String portString = reader.readLine();  //Read the port number
+                toPort = Integer.parseInt(portString);  //Try to convert String to Integer
+
+                if (toPort >= 0 && toPort <= 65536) {   //Verify, if the toPort is greater than fromPort
+                    if (toPort >= fromPort) {
+                        isValid = true;  //Set the boolean to true and exit the while loop
+                    }
+                }
+                else System.out.println("Invalid port!\nPort range is -> 0 - 65536");   //Inform the user about right port range
+            } catch (NumberFormatException n) {
+                System.out.println("Number Format Exception -> " + n);
+            } catch (Exception e) {  //Error when trying to read user input
+                System.out.println("Cannot Read The Port Number -> " + e);
+            }
+        }
     }
 }
