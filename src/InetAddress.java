@@ -13,7 +13,7 @@ public class InetAddress {
             Inet4Address scan = (Inet4Address) Inet4Address.getByName("google.com");
             System.out.println(scan.getHostAddress());
             System.out.println(scan.getHostName());
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
