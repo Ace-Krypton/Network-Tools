@@ -14,7 +14,7 @@ public class RemotePortScanner {
         int fromPort = 0;       //Store the starting
         int toPort = 0;         //Store the ending
 
-        System.out.println("Please enter the target IP address -> ");   //Ask user to enter the IP address
+        System.out.print("Please enter the target IP address -> ");   //Ask user to enter the IP address
 
         try {
             targetIP = reader.readLine();  //Read the target IP address
@@ -28,7 +28,7 @@ public class RemotePortScanner {
         //As long as isValid false, it will try to obtain a valid port number
         while (!isValid) {
             try {
-                System.out.println("Please enter the first port -> ");  //Ask user to type the first port
+                System.out.print("Please enter the first port -> ");  //Ask user to type the first port
                 String portString = reader.readLine();  //Read the port number
                 fromPort = Integer.parseInt(portString);  //Try to convert String to Integer
 
@@ -48,7 +48,7 @@ public class RemotePortScanner {
         //As long as isValid is false, try to obtain a valid port number
         while (!isValid) {
             try {
-                System.out.println("Enter The Last Port ->  "); //Ask user to type last port
+                System.out.print("Enter The Last Port ->  "); //Ask user to type last port
                 String portString = reader.readLine();  //Read the port number
                 toPort = Integer.parseInt(portString);  //Try to convert String to Integer
 
