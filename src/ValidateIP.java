@@ -21,6 +21,8 @@ public class ValidateIP {
         else System.out.println(ipAddress + " is not valid");
 
         System.out.println(validateIpAddress("192.168.1.2"));
+        if (validateIpAddress("192.121.212.355")) System.out.println("It is valid");
+        else System.out.println("It is not valid");
     }
 
     public static boolean validateIpAddress(String ipAddress) {
