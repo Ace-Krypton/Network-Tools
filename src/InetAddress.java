@@ -10,7 +10,7 @@ public class InetAddress {
             System.out.println(address.getHostName());
 
             //Getting the IP and Hostname of website
-            Inet4Address scan = (Inet4Address) Inet4Address.getByName("google.com");
+            Inet4Address scan = (Inet4Address) Inet4Address.getByName("pja.edu.pl");
             System.out.println(scan.getHostAddress());
             System.out.println(scan.getHostName());
 

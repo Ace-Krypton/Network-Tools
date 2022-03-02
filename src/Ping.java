@@ -1,0 +1,29 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
+public class Ping {
+    public static void main(String[] args) {
+        try {
+            String hostAddress = "google.com";
+            Inet4Address host = (Inet4Address) Inet4Address.getByName(hostAddress);
+            System.out.println(host.isReachable(1000)); //In Linux Systems, If you run this with a root, it will work
+            Process p = Runtime.getRuntime().exec("ping " + hostAddress);
+            BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            String commandOutput = "";
+            boolean isReachable = true;
+            //Reading the output stream of the command
+            while ((commandOutput = inputStream.readLine()) != null) {
+                System.out.println(commandOutput);
+                
+            }
+        } catch (UnknownHostException u) {
+            System.out.println("Unknown Host Exception -> " + u);
+        } catch (IOException i) {
+            System.out.println("Something -> " + i);
+        }
+    }
+}
