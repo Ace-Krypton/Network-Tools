@@ -19,9 +19,11 @@ public class ValidateIP {
 
         if (isValid) System.out.println(ipAddress + " is valid");
         else System.out.println(ipAddress + " is not valid");
+
+        System.out.println(validateIpAddress("192.168.1.2"));
     }
 
-    public boolean validateIpAddress(String ipAddress) {
+    public static boolean validateIpAddress(String ipAddress) {
         String[] numbers = ipAddress.split("\\.");
         if (numbers.length != 4) return false;
         for (String str : numbers) {
