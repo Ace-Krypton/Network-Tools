@@ -13,7 +13,7 @@ public class Ping {
             Process p = Runtime.getRuntime().exec("ping " + hostAddress);
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
-            String commandOutput = "";
+            String commandOutput;
             boolean isReachable = true;
             //Reading the output stream of the command
             while ((commandOutput = inputStream.readLine()) != null) {
