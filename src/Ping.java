@@ -18,8 +18,14 @@ public class Ping {
             //Reading the output stream of the command
             while ((commandOutput = inputStream.readLine()) != null) {
                 System.out.println(commandOutput);
-                
+
+                if (commandOutput.contains("Destination host unreachable")) {
+                    isReachable = false;
+                    break;
+                }
             }
+            if (isReachable) System.out.println("Host is reachable");
+            else System.out.println("Host is unreachable");
         } catch (UnknownHostException u) {
             System.out.println("Unknown Host Exception -> " + u);
         } catch (IOException i) {
