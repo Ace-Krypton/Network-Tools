@@ -20,4 +20,14 @@ public class ValidateIP {
         if (isValid) System.out.println(ipAddress + " is valid");
         else System.out.println(ipAddress + " is not valid");
     }
+
+    public boolean validateIpAddress(String ipAddress) {
+        String[] numbers = ipAddress.split("\\.");
+        if (numbers.length != 4) return false;
+        for (String str : numbers) {
+            int i = Integer.parseInt(str);
+            if ((i < 0) || (i > 255)) return false;
+        }
+        return true;
+    }
 }
