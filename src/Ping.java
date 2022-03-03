@@ -11,7 +11,12 @@ public class Ping {
             Inet4Address host = (Inet4Address) Inet4Address.getByName(hostAddress);
             System.out.println(host.isReachable(1000)); //In Linux Systems, If you run this with a root, it will work
             Process p = Runtime.getRuntime().exec("ping " + hostAddress);
+            Process c = Runtime.getRuntime().exec("pwd");
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(c.getInputStream()));
+
+            String command = in.readLine();
+            System.out.println(command);
 
             String commandOutput;
             boolean isReachable = true;
