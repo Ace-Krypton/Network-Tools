@@ -25,6 +25,23 @@ public class EmailSocket {
             System.out.println("IOException -> " + i);
         }
 
-        //If everything 
+        /*  If everything has been initialized then we want to write some data
+         *  to the socket we have opened a connection to on port 25
+         * */
+
+        if (smtpSocket != null && out != null && in != null) {
+            try {
+                /*
+                STEP 1 -> Get a greeting by the server
+                 */
+                String responseLine;
+                while ((responseLine = in.readLine()) != null) {
+                    System.out.println("Server -> " + responseLine);
+                    if (responseLine.contains("220")) break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
