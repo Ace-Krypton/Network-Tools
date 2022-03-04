@@ -19,7 +19,7 @@ public class UDPClient {
             clientSocket.receive(receivePacket);
             receiveData = receivePacket.getData();
             String stringReceiveData = new String(receiveData);
-            System.out.println("From Server -> " + stringSendData);
+            System.out.println("From Server -> " + stringReceiveData);
             clientSocket.close();
         } catch (Exception e) {
             e.printStackTrace();
