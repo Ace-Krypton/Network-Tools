@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Inet4Address;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -35,9 +36,22 @@ public class EmailSocket {
                 STEP 1 -> Get a greeting by the server
                  */
                 String responseLine;
+
                 while ((responseLine = in.readLine()) != null) {
                     System.out.println("Server -> " + responseLine);
-                    if (responseLine.contains("220")) break;
+                    if (responseLine.indexOf("220") != -1) break;
+                }
+
+                /*
+                STEP 2 -> The client initiates its dialog by responding with a "HELO" command identifying itself
+                 */
+
+                out.println("HELO" + Inet4Address.getLocalHost().getHostAddress());
+                System.out.println("HELO" + Inet4Address.getLocalHost().getHostAddress());
+
+                while ((responseLine = in.readLine()) != null) {
+                    System.out.println("Server -> " + responseLine);
+                    if (responseLine.indexOf("250") != -1) break;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
