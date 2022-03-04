@@ -4,7 +4,7 @@ public class UDPClient {
     public static void main(String[] args) {
         try {
             DatagramSocket clientSocket = new DatagramSocket(0);
-            byte[] sendData = new byte[1024];    //Store outgoing data
+            byte[] sendData;    //Store outgoing data
             byte[] receiveData = new byte[1024]; //Store incoming data
             //Amount of data = 65535 - 20 (IP Header) - 8 (UDP Header) = 65508
 
