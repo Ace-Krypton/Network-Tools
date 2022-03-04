@@ -1,4 +1,3 @@
-import java.io.*;
 import java.net.*;
 
 public class UDPClient {
@@ -16,7 +15,11 @@ public class UDPClient {
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverAddress, 9090);
             clientSocket.send(sendPacket);
 
-            DatagramPacket receivePacket = new DatagramPacket
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            clientSocket.receive(receivePacket);
+            receiveData = receivePacket.getData();
+            String stringReceiveData = new String(receiveData);
+            System.out.println("From Server -> " + stringSendData);
 
         } catch (Exception e) {
             e.printStackTrace();
